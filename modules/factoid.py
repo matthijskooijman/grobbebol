@@ -444,7 +444,8 @@ def listnames(bot, trigger):
 
     facts, aliases = get_channel_data(bot, channel)
     # Use msg instead of reply, since that supports splitting
-    bot.msg(trigger.nick, 'Facts: {}'.format(', '.join(sorted(facts.keys()))), max_messages=10)
+    factnames = [name for (name, verb, values) in facts.values()]
+    bot.msg(trigger.nick, 'Facts: {}'.format(', '.join(sorted(factnames))), max_messages=10)
     bot.msg(trigger.nick, 'Aliases: {}'.format(', '.join(sorted(aliases.keys()))), max_messages=10)
 
 @commands('factoid export')
