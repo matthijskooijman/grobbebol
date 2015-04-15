@@ -60,6 +60,8 @@ from willie.module import *
 from willie.tools import WillieMemory, WillieMemory
 
 import re
+import os
+import json
 
 def setup(bot):
     pass
@@ -103,6 +105,12 @@ def set_channel_data(bot, channel, facts, aliases):
     by a new dict)."""
     bot.db.set_channel_value(channel, 'factoids_facts', facts)
     bot.db.set_channel_value(channel, 'factoids_aliases', aliases)
+
+    if bot.config.has_option('factoid', 'export_dir'):
+        obj = {'facts': facts, 'aliases': aliases}
+        fname = os.path.join(bot.config.factoid.export_dir, channel + '.json')
+        with open(fname, 'w') as out:
+            json.dump(obj, out, indent=4, sort_keys=True)
 
 def get_value(bot, channel, key):
     """Retrieve a single value. Returns (key, verb, facts), where key is
@@ -437,6 +445,21 @@ def listnames(bot, trigger):
     facts, aliases = get_channel_data(bot, channel)
     bot.reply('Facts: {}'.format(', '.join(facts.keys())))
     bot.reply('Aliases: {}'.format(', '.join(aliases.keys())))
+
+@commands('factoid export')
+@require_privmsg()
+def export(bot, trigger):
+    """
+    Shows if, and where the factoid database can be downloaded.
+
+    Only usable in a private message.
+    """
+    if (not bot.config.has_option('factoid', 'export_dir')
+        or not bot.config.has_option('factoid', 'export_url')):
+        bot.reply('Export not configured')
+    else:
+        url = bot.config.factoid.export_url
+        bot.reply('Factoid data can be found at ' + url)
 
 if __name__ == '__main__':
     print(__doc__.strip())
