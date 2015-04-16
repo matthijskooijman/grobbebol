@@ -57,7 +57,6 @@ message, which include the channel explicitely. See their corresponding
 
 """
 from willie.module import *
-from willie.tools import WillieMemory, WillieMemory
 
 import re
 import os
