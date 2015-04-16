@@ -23,12 +23,15 @@ Since an example is clearer than a thousand words of documentation
 <blathijs>  !timers is also http://www.instructables.com/id/Arduino-Timer-Interrupts/
 <grobbebol> blathijs: I now know more about timers
 <blathijs>  !timers
-<grobbebol> !timers is http://www.engblaze.com/microcontroller-tutorial-avr-and-arduino-timer-interrupts,
+<grobbebol> timers is http://www.engblaze.com/microcontroller-tutorial-avr-and-arduino-timer-interrupts,
             and also http://www.instructables.com/id/Arduino-Timer-Interrupts/
 <blathijs>  !timer aliases timers
 <grobbebol> blathijs: timer is now an alias for timers
 <blathijs>  !timer
-<grobbebol> !timers is http://www.engblaze.com/microcontroller-tutorial-avr-and-arduino-timer-interrupts,
+<grobbebol> timers is http://www.engblaze.com/microcontroller-tutorial-avr-and-arduino-timer-interrupts,
+            and also http://www.instructables.com/id/Arduino-Timer-Interrupts/
+<blathijs>  !tell Yotson about timers
+<grobbebol> Yotson: timers is http://www.engblaze.com/microcontroller-tutorial-avr-and-arduino-timer-interrupts,
             and also http://www.instructables.com/id/Arduino-Timer-Interrupts/
 ```
 
