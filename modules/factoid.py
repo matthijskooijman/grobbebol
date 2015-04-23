@@ -291,14 +291,14 @@ def do_get(bot, channel, target, key, error):
     formatted = ''
     for value in values:
         if formatted:
-            formatted += ', and also {}'.format(value)
+            formatted += ' , and also {}'.format(value)
         else:
             formatted += value
 
     if (target):
-        bot.say('{}: {} {} {}.'.format(target, key, verb, formatted))
+        bot.say('{}: {} {} {} .'.format(target, key, verb, formatted))
     else:
-        bot.reply('{} {} {}.'.format(key, verb, formatted))
+        bot.reply('{} {} {} .'.format(key, verb, formatted))
 
 @commands('factoid get')
 @require_privmsg
