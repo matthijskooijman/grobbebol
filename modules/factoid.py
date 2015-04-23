@@ -257,6 +257,7 @@ def forget(bot, trigger):
         bot.reply(exc)
 
 @commands('(?:(?:tell|teach) ([^ ]+) about )?(.*)')
+@commands('give ([^ ]+) (.*)')
 @require_chanmsg()
 def get(bot, trigger):
     # Intentionally not documented, since the command regex looks ugly
@@ -314,6 +315,7 @@ def getcmd(bot, trigger):
     Or, to direct the reply at someone else, say:
       $prefixtell this_guy about deadbeef
       $prefixteach this_guy about deadbeef
+      $prefixgive this_guy deadbeef
     """
     # Note that group 1 is command, 2 is all arguments, group 3 is the
     # first argument
