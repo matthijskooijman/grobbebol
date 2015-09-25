@@ -334,13 +334,13 @@ def addcmd(bot, trigger):
     Add a factoid, or add more info about an existing factoid.
     e.g. $prefixfactoid add #mychannel deadbeef is a commonly used hexadecimal dummy value
 
-    This command is only usable in a private message. To add a factoid in a channel, say:
+    This command is only usable in a private message. To add a factoid
+    in a channel, say:
 
       $prefixdeadbeef is a commonly used hexadecimal dummy value
 
-    or, to add more info:
-
-      $prefixdeadbeef is also a musicplayer for Linux
+    The syntax is the same for adding info, no explicit "also" is
+    required like in a channel.
     """
     # Note that group 1 is the full command, 2 is all arguments
     # Since our last argument can contain spaces, we split the arguments
@@ -363,7 +363,7 @@ def addcmd(bot, trigger):
 
     try:
         add_facts(bot, channel, key, verb, value.split(', and also '), True)
-        bot.reply('I now know about {}'.format(key))
+        bot.reply('I now know (more) about {}'.format(key))
     except FactError as exc:
         bot.reply(exc)
 
