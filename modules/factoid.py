@@ -272,12 +272,14 @@ def get(bot, trigger):
     error = False
     if target:
         error = True
+    # If no target is specified, just reply to the sender
+    if not target:
+        target = trigger.nick
 
     do_get(bot, channel, target, key, error)
 
 def do_get(bot, channel, target, key, error):
-    """Helper function to get a factoid, format it and reply to target
-       (or the channel, if no target given.
+    """Helper function to get a factoid, format it and reply to target.
 
        If error is True, an error is emitted if the factoid is not found."""
     value = get_value(bot, channel, key)
@@ -296,10 +298,8 @@ def do_get(bot, channel, target, key, error):
         else:
             formatted += value
 
-    if (target):
-        bot.say('{}: {} {} {}'.format(target, key, verb, formatted))
-    else:
-        bot.reply('{} {} {}'.format(key, verb, formatted))
+    max_messages = 3
+    bot.say('{}: {} {} {}'.format(target, key, verb, formatted), max_messages)
 
 @commands('factoid get')
 @require_privmsg
@@ -325,7 +325,7 @@ def getcmd(bot, trigger):
         bot.reply("Invalid channel specified: {}. Valid channels are {}".format(channel, ', '.join(bot.channels)))
         return
 
-    do_get(bot, channel, None, key, True)
+    do_get(bot, channel, trigger.nick, key, True)
 
 @commands('factoid add')
 @require_privmsg
