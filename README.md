@@ -9,6 +9,8 @@ topics.
 Grobbebol runs on top of the willie IRC bot, with some modifications
 (which are sent upstream and will hopefully be included).
 
+The version used is https://github.com/matthijskooijman/willie/tree/grobbebol
+
 Grobbebol is being run by Matthijs Kooijman (matthijs@stdin.nl, blathijs
 on various IRC networks).
 
